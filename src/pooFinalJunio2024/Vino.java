@@ -10,8 +10,20 @@ public class Vino implements Comparable<Vino>{
 	private final MaduracionVino maduracion;
 	private final int coste;
 		
+	public LocalDate getFechaProduccion() {
+		return fechaDeProduccion;
+	}
+	
+	public String getNombre() {
+		return nombre;
+	}
+	
 	public MaduracionVino getMaduracion() {
 		return maduracion;
+	}
+	
+	public ColorVino getColor() {
+		return color;
 	}
 	
 	public int getCoste() {
@@ -20,6 +32,25 @@ public class Vino implements Comparable<Vino>{
 	
 	// Primer constructor
 	public Vino(LocalDate fechaDeProduccion, String nombre, ColorVino color, MaduracionVino maduracion, int coste) {
+		if (fechaDeProduccion == null) throw new IllegalArgumentException("La fecha de producción del vino no puede ser nula");
+		
+		if (nombre == null) throw new IllegalArgumentException("El nombre del vino no puede ser nulo");
+		
+		
+		boolean colorValid = false;
+		for (ColorVino c : ColorVino.values()) {
+			if (color.equals(c)) colorValid = true;
+		}
+		if (!colorValid) throw new IllegalArgumentException("El color del vino no está entre los posibles valores");
+		
+		boolean maduracionValid = false;
+		for (MaduracionVino m : MaduracionVino.values()) {
+			if (maduracion.equals(m)) maduracionValid = true;
+		}
+		if (!maduracionValid) throw new IllegalArgumentException("La maduración del vino no está entre los posibles valores");
+
+		if (coste < 0) throw new IllegalArgumentException("El coste del vino no puede ser negativo");
+		
 		this.fechaDeProduccion = fechaDeProduccion; 
 		this.nombre =  nombre;
 		this.color =  color;

@@ -1,8 +1,14 @@
 package pooFinalJunio2024;
 
+import java.io.IOException;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.LinkedList;
+import java.util.List;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 public class Programa {
 	public static void main(String[] args) {
@@ -61,5 +67,53 @@ public class Programa {
 		mejoresVinos.addAll(cata2.getMejorVino());
 		
 		System.out.println(mejoresVinos);		
+		
+		boolean existeVinoRosado = vinos.stream()
+										.anyMatch(vino -> vino.getColor().equals(ColorVino.ROSADO));
+		System.out.println(existeVinoRosado);
+		
+		long vinosProducidosAntesDe2021 = vinos.stream()
+												.filter(vino -> vino.getFechaProduccion().getYear() < 2021)
+												.count();
+		System.out.println(vinosProducidosAntesDe2021);
+		
+		List<Vino> vinosCaros = vinos.stream()
+											.filter(vino -> vino.getCoste() > 5)
+											.sorted()
+											.collect(Collectors.toList());
+		System.out.println(vinosCaros);
+		
+		List<String> nombreVinosCaros = vinos.stream()
+										.filter(vino -> vino.getCoste() > 5)
+										.map(vino -> vino.getNombre())
+										// Ordena alfabeticamente, pero distingue entre mayus, minus y tildes
+										.sorted()
+										.collect(Collectors.toList());
+		System.out.println(nombreVinosCaros);		
+		
+		try {
+			Utils.registrarVinos();
+		} catch (IOException e) {
+			System.out.println("Error al registrar vino");
+		}
+		
+		Collection<Integer> numeros = new ArrayList<Integer>();
+		numeros.add(4);
+		numeros.add(5);
+		numeros.add(7);
+		numeros.add(9);
+		numeros.add(4);
+		numeros.add(4);
+		
+		Function<Integer, Integer> cuadrado = x -> x * x;
+		Function<Integer, Integer> cubo = x -> x * x * x;
+		
+		System.out.println(numeros);
+		
+		Utils.buscarReemplazar(numeros, 4, cuadrado);
+		System.out.println(numeros);
+		
+		Utils.buscarReemplazar(numeros, 4, cubo);
+		System.out.println(numeros);
 	}
 }
