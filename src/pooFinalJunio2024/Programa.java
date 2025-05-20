@@ -42,6 +42,8 @@ public class Programa {
 			}
 		}
 		
+		System.out.println("Cata 1: " + cata1);
+		
 		System.out.println("Vinos cata 1: " + cata1.getVinos());
 		System.out.println("Vinos cata 2: " + cata2.getVinos());
 		

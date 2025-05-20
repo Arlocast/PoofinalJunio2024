@@ -186,7 +186,7 @@ public abstract class Cata {
 
 	@Override
 	public String toString() {
-		return "Cata: nombre=" + nombre + ", vinos=" + vinos + ", valoraciones=" + valoraciones;
+		return this.getClass().getSimpleName() + ": nombre=" + nombre + ", vinos=" + vinos + ", valoraciones=" + valoraciones;
 	}
 	
 }

@@ -94,7 +94,7 @@ public class Vino implements Comparable<Vino>{
 
 	@Override
 	public String toString() {
-		return "Vino [fechaDeProduccion=" + fechaDeProduccion + ", nombre=" + nombre + ", color=" + color
+		return "Vino: [fechaDeProduccion=" + fechaDeProduccion + ", nombre=" + nombre + ", color=" + color
 				+ ", maduracion=" + maduracion + ", coste=" + coste + "]";
 	}
 		

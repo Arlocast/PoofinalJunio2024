@@ -40,7 +40,7 @@ public class CataAmateur extends Cata{
 	
 	@Override
 	public String toString() {
-		return super.toString().replace("Cata", "CataAmateur");
+		return super.toString();
 	}
 	
 	

@@ -46,7 +46,7 @@ public class CataProfesional extends Cata {
 	
 	@Override
 	public String toString() {
-		return super.toString().replace("Cata", "CataProfesional") + ", sumilleres=" + sumilleres + ", responsable=" + responsable;
+		return super.toString() + ", sumilleres=" + sumilleres + ", responsable=" + responsable;
 	}
 
 	
